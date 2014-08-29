@@ -1,0 +1,15 @@
+CXX = clang++
+LFLAGS = -Wall -g -o Tetris -lSDL2 -lSDL2_image -lpng
+CXXFLAGS = -std=c++11 -Wall
+SOURCES = $(wildcard src/**/*.cc src/*.cc)
+OBJECTS = $(patsubst %.cc,%.o,$(SOURCES))
+
+p1: $(OBJECTS)
+	$(CXX) $(LFLAGS) $(OBJECTS)
+
+# Add dependencies to our main.o target
+main.o: main.cpp
+	$(CXX) $(CXXLFAGS) main.cpp
+
+timer.o: timer.cpp timer.h
+	$(CXX) $(CXXFLAGS) timer.cpp
